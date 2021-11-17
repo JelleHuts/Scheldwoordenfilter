@@ -42,27 +42,28 @@ class Scheldwoorden
    }
 
    //delete
-   public function delete()
+   public function delete($deleteTest)
    {
        // select all query
-       $queryDelete = "DELETE FROM " . $this->table_name . " WHERE id = 1" ;
-       $resultDelete = $this->conn->query($queryDelete);
-       return $resultDelete;
+        $queryDelete = 'DELETE FROM ' . $this->table_name . ' WHERE id = '. $deleteTest;
+        $resultDelete = $this->conn->query($queryDelete);
+        return $resultDelete;
    }
 
 
    //update 
-   public function update()
+   public function update($updateArray)
 
     {
 
         // select all query
-
-        $queryUpdate = 'UPDATE ' . $this->table_name . ' SET naam = "cola-light3"' . ' WHERE id = 2;';
-
-        $resultUpdate = $this->conn->query($queryUpdate);
-
+        $queryUpdate =
+            "UPDATE " .
+            $this->table_name .
+            " SET woord = '" . $updateArray['woord'].
+            "' WHERE id = " . $updateArray['id'];
+            echo $queryUpdate;
+            ($resultUpdate = $this->conn->query($queryUpdate));
         return $resultUpdate;
-
     }
 }
